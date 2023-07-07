@@ -299,12 +299,20 @@
                                 &#x1F44B;
                             </div>
                             <div class="media-body">
-                                <h5>Shaun Park</h5>
-                                <p>Project Leader</p>
+                                <h5>
+                                    @auth
+                                        {{ Auth::user()->name }}
+                                    @endauth
+                                </h5>
+                                <p>
+                                    @auth
+                                        {{ Auth::user()->email }}
+                                    @endauth
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="dropdown-item">
+                    {{-- <div class="dropdown-item">
                         <a href="user-profile.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -313,8 +321,8 @@
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg> <span>Profile</span>
                         </a>
-                    </div>
-                    <div class="dropdown-item">
+                    </div> --}}
+                    {{-- <div class="dropdown-item">
                         <a href="app-mailbox.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -325,8 +333,8 @@
                                 </path>
                             </svg> <span>Inbox</span>
                         </a>
-                    </div>
-                    <div class="dropdown-item">
+                    </div> --}}
+                    {{-- <div class="dropdown-item">
                         <a href="auth-boxed-lockscreen.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -336,23 +344,23 @@
                                 <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                             </svg> <span>Lock Screen</span>
                         </a>
-                    </div>
-                    <div class="dropdown-item">
-                        <form action="/modern-dark-menu/authentication/boxed/logout" method="POST">
-                            @csrf
-                            <button type="submit">
-                                {{-- <a href="auth-boxed-signin.html"> --}}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
-                                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                                    <polyline points="16 17 21 12 16 7"></polyline>
-                                    <line x1="21" y1="12" x2="9" y2="12"></line>
-                                </svg> <span>Log Out</span>
-                                {{-- </a> --}}
-                            </button>
-                        </form>
-                    </div>
+                    </div> --}}
+                    @auth
+                        <div class="dropdown-item">
+                            <form action="{{ getRouterValue() }}/authentication/boxed/logout" method="POST">
+                                @csrf
+                                <button type="submit">
+                                    Log Out
+                                </button>
+                            </form>
+                        </div>
+                    @else
+                        <div class="dropdown-item">
+                            <a href="{{ getRouterValue() }}/authentication/boxed/sign-in">
+                                Log In
+                            </a>
+                        </div>
+                    @endauth
                 </div>
             </li>
         </ul>

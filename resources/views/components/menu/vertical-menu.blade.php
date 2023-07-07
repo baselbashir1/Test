@@ -203,9 +203,9 @@
                     <li class="{{ Request::routeIs('profile') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/user/profile"> Profile </a>
                     </li>
-                    <li class="{{ Request::routeIs('settings') ? 'active' : '' }}">
+                    {{-- <li class="{{ Request::routeIs('settings') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/user/settings"> Account Settings </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 

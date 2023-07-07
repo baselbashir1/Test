@@ -121,7 +121,7 @@ foreach ($prefixRouters as $prefixRouter) {
                 //     return view('pages.app.ecommerce.shop', ['title' => 'Ecommerce Shop | CORK - Multipurpose Bootstrap Dashboard Template ', 'breadcrumb' => 'This Breadcrumb']);
                 // })->name('ecommerce-shop');
 
-                Route::get('/shop', [ServiceController::class, 'index']);
+                Route::get('/shop', [ServiceController::class, 'index'])->middleware('auth');
                 Route::get('/services', [ServiceController::class, 'services']);
                 Route::get('/detail/{service}', [ServiceController::class, 'show']);
                 Route::get('/add', [ServiceController::class, 'create']);
@@ -475,9 +475,9 @@ foreach ($prefixRouters as $prefixRouter) {
          */
 
         Route::prefix('user')->group(function () {
-            Route::get('/settings', function () {
-                return view('pages.user.account-settings', ['title' => 'User Profile | CORK - Multipurpose Bootstrap Dashboard Template ', 'breadcrumb' => 'This Breadcrumb']);
-            })->name('settings');
+            // Route::get('/settings', function () {
+            //     return view('pages.user.account-settings', ['title' => 'User Profile | CORK - Multipurpose Bootstrap Dashboard Template ', 'breadcrumb' => 'This Breadcrumb']);
+            // })->name('settings');
             Route::get('/profile', function () {
                 return view('pages.user.profile', ['title' => 'Account Settings | CORK - Multipurpose Bootstrap Dashboard Template ', 'breadcrumb' => 'This Breadcrumb']);
             })->name('profile');
