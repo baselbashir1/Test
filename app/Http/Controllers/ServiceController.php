@@ -16,6 +16,14 @@ class ServiceController extends Controller
         return view('pages.app.ecommerce.shop', ['title' => 'Ecommerce Shop | CORK - Multipurpose Bootstrap Dashboard Template ', 'breadcrumb' => 'This Breadcrumb'], ['services' => $services]);
     }
 
+    public function services()
+    {
+        $services = Service::all();
+        $serviceImages = ServiceImage::all();
+
+        return view('pages.app.ecommerce.list', ['title' => 'Ecommerce Shop | CORK - Multipurpose Bootstrap Dashboard Template ', 'breadcrumb' => 'This Breadcrumb'], ['services' => $services, 'serviceImages' => $serviceImages]);
+    }
+
     public function show(Service $service)
     {
         $serviceImages = ServiceImage::where('service_id', $service->id)->get();
@@ -77,18 +85,20 @@ class ServiceController extends Controller
 
     public function update(Request $request, Service $service)
     {
-        if ($service->user_id != auth()->id) {
-            abort(403, 'Unauthorized Action');
-        }
+        // if ($service->user_id != auth()->id) {
+        //     abort(403, 'Unauthorized Action');
+        // }
 
-        $formFields = $request->validate([
-            'title' => 'required',
-            'picture' => 'required',
-            // 'icon' => 'required',
-            'content' => 'required',
-            'service_image' => 'required',
-            // 'service_id' => 'required'
-        ]);
+        // $formFields = $request->validate([
+        //     'title' => 'required',
+        //     'picture' => 'required',
+        //     // 'icon' => 'required',
+        //     'content' => 'required',
+        //     // 'service_image' => 'required',
+        //     // 'service_id' => 'required'
+        // ]);
+
+        $formFields = $request->all();
 
         if ($request->hasFile('picture')) {
             $formFields['picture'] = $request->file('picture')->store('pictures', 'public');
@@ -109,23 +119,25 @@ class ServiceController extends Controller
 
         // $service_id = Service::latest()->first()->id;
 
-        ServiceImage::create([
-            'image' => $formFields['service_image'],
-            'service_id' => $service->id
-        ]);
+        // ServiceImage::create([
+        //     'image' => $formFields['service_image'],
+        //     'service_id' => $service->id
+        // ]);
 
         return redirect(getRouterValue() . '/app/ecommerce/shop');
     }
 
-    public function destroy(Service $service)
+    public function destroy(Request $request, Service $service)
     {
+        // if ($service->user_id != auth()->id())
+        //     abort(403, 'Unauthorized Action');
 
-        if ($service->user_id != auth()->id())
-            abort(403, 'Unauthorized Action');
+        $serviceImages = ServiceImage::where('service_id', $service->id);
 
+        $serviceImages->delete();
         $service->delete();
 
-        return redirect(getRouterValue() . '/app/ecommerce/shop');
+        return back();
     }
 
     // public function manage()

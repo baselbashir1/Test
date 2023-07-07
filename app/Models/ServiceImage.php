@@ -11,8 +11,8 @@ class ServiceImage extends Model
 
     protected $fillable = ['image', 'service_id', 'created_at', 'updated_at'];
 
-    public function service()
-    {
-        return $this->belongsTo(Service::class);
-    }
+    // public function service()
+    // {
+    //     return $this->belongsTo(Service::class);
+    // }
 }

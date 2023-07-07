@@ -122,12 +122,16 @@ foreach ($prefixRouters as $prefixRouter) {
                 // })->name('ecommerce-shop');
 
                 Route::get('/shop', [ServiceController::class, 'index']);
+                Route::get('/services', [ServiceController::class, 'services']);
                 Route::get('/detail/{service}', [ServiceController::class, 'show']);
                 Route::get('/add', [ServiceController::class, 'create']);
                 Route::post('/add-service', [ServiceController::class, 'store']);
                 Route::post('/detail/{service}/add-service-image', [ServiceImageController::class, 'addImageService']);
                 Route::get('/edit/{service}', [ServiceController::class, 'edit']);
-                Route::put('/edit-service/{service}', [ServiceController::class, 'update']);
+                Route::post('/delete/{service}', [ServiceController::class, 'destroy']);
+                Route::post('/edit-service/{service}', [ServiceController::class, 'update']);
+                Route::post('/edit/{service}/edit-service-image/{serviceImage}', [ServiceImageController::class, 'editImageService']);
+                Route::post('/delete/{service}/delete-service-image/{serviceImage}', [ServiceImageController::class, 'deleteImageService']);
             });
 
             // Invoice

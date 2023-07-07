@@ -20,4 +20,9 @@ class Service extends Model
     {
         return $this->hasMany(ServiceImage::class);
     }
+
+    public function serviceImage()
+    {
+        return $this->belongsTo(ServiceImage::class);
+    }
 }

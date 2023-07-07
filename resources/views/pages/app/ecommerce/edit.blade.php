@@ -28,12 +28,27 @@
             <!-- END GLOBAL MANDATORY STYLES -->
 
             <div class="row mb-4 layout-spacing layout-top-spacing">
-                <form method="PUT" action="{{ getRouterValue() }}/app/ecommerce/edit-service/{{ $service->id }}"
+                <form method="POST" action="{{ getRouterValue() }}/app/ecommerce/edit-service/{{ $service->id }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="widget-content widget-content-area ecommerce-create-section">
-
+                            <div class="row mb-4">
+                                <div class="col-sm-12">
+                                    <div class="row">
+                                        <label for="picture">Service Picture</label>
+                                        <div class="text-center">
+                                            <img src="{{ $service->picture ? asset('storage/' . $service->picture) : asset('no-image.png') }}"
+                                                class="card-img-top" alt="..."
+                                                style="width: 250px; height: 250px;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container mt-2 mb-2">
+                                    <input type="file" name="picture" class="form-control"
+                                        placeholder="Service Picture" value="{{ $service->picture }}">
+                                </div>
+                            </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="title">Service Title</label>
@@ -41,76 +56,101 @@
                                         placeholder="Service Title" value="{{ $service->title }}">
                                 </div>
                             </div>
-
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label for="content">Service Content</label>
                                     <textarea name="content" cols="30" rows="10" class="form-control" placeholder="Service Content">{{ $service->content }}</textarea>
                                 </div>
                             </div>
-
-                            {{-- <div class="row mb-4">
-                                <div class="col-sm-12">
-                                    <label for="service_image">Upload Service Images</label>
-                                    <input type="file" name="service_image" class="form-control" id="inputEmail3"
-                                        placeholder="Service Picture">
-                                </div>
-                            </div> --}}
-
-                            {{-- <div class="row">
-                                <div class="col-md-8">
-                                    <label for="product-images">Upload Images</label>
-                                    <div class="multiple-file-upload">
-                                        <input type="file" class="filepond file-upload-multiple" name="service_image"
-                                            value="{{ old('service_image') }}" multiple data-allow-reorder="true"
-                                            data-instant-upload="false" data-max-file-size="3MB" data-max-files="5">
-                                    </div>
-                                </div>
-                            </div> --}}
-
-                        </div>
-                    </div>
-
-                    <div class="container">
-                        @unless (count($serviceImages) == 0)
-                            <form method="DELETE" action="">
-                                @foreach ($serviceImages as $serviceImage)
-                                    <div class="row">
-                                        <div class="text-center">
-                                            <div class="card">
-                                                <img src="{{ $serviceImage->image ? asset('storage/' . $serviceImage->image) : asset('no-image.png') }}"
-                                                    class="card-img-top" alt="..."
-                                                    style="width: 500px; height: 500px;">
-                                            </div>
-                                            <div class="container mt-2 mb-2">
-                                                <a class="btn btn-success" href="{{ $serviceImage->id }}">Edit</a>
-                                                <button class="btn btn-danger">Delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </form>
-                        @else
-                            <p>not services</p>
-                        @endunless
-                    </div>
-
-                    <div class="col-xxl-8 col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                        <div class="row">
-                            <div class="col-xxl-12 col-xl-4 col-lg-4 col-md-5 mt-4">
-                                <div class="widget-content widget-content-area ecommerce-create-section">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-success w-100">Save Changes</button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="container">
+                                <button type="submit" class="btn btn-success w-100">
+                                    Update Service Details
+                                </button>
                             </div>
                         </div>
                     </div>
                 </form>
-
             </div>
+
+            <div class="row mb-4 layout-spacing layout-top-spacing">
+                {{-- <form method="POST" action="" enctype="multipart/form-data">
+                    @csrf --}}
+                @unless (count($serviceImages) == 0)
+                    <h3>Service Images</h3>
+                    @foreach ($serviceImages as $serviceImage)
+                        <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
+                            <div class="widget-content widget-content-area ecommerce-create-section">
+                                <div class="row mb-4">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="text-center">
+                                                <img src="{{ $serviceImage->image ? asset('storage/' . $serviceImage->image) : asset('no-image.png') }}"
+                                                    class="card-img-top" alt="..."
+                                                    style="width: 250px; height: 250px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="container mt-2 mb-2">
+                                        <input type="file" name="picture" class="form-control"
+                                            placeholder="Service Picture" value="{{ $service->picture }}">
+                                    </div> --}}
+                                </div>
+                                <form method="POST"
+                                    action="{{ getRouterValue() }}/app/ecommerce/edit/{{ $service->id }}/edit-service-image/{{ $serviceImage->id }}"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="container mt-2 mb-2">
+                                        <input type="file" name="img" class="form-control"
+                                            placeholder="Service Picture" value="{{ $serviceImage->image }}">
+                                    </div>
+                                    <div class="container">
+                                        <button type="submit" class="btn btn-success w-100">
+                                            Update Image
+                                        </button>
+                                    </div>
+                                </form>
+                                <form method="POST"
+                                    action="{{ getRouterValue() }}/app/ecommerce/delete/{{ $service->id }}/delete-service-image/{{ $serviceImage->id }}">
+                                    @csrf
+                                    <div class="container mt-2">
+                                        <button type="submit" class="btn btn-danger w-100">
+                                            Delete Image
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <h3 class="text-center">No Images Found</h3>
+                @endunless
+                {{-- </form> --}}
+            </div>
+
+            {{-- <div class="row mb-4 layout-spacing layout-top-spacing">
+                <div class="container">
+                    @unless (count($serviceImages) == 0)
+                        <form method="POST" action="">
+                            @foreach ($serviceImages as $serviceImage)
+                                <div class="row">
+                                    <div class="text-center">
+                                        <div class="card">
+                                            <img src="{{ $serviceImage->image ? asset('storage/' . $serviceImage->image) : asset('no-image.png') }}"
+                                                class="card-img-top" alt="..." style="width: 500px; height: 500px;">
+                                        </div>
+                                        <div class="container mt-2 mb-2">
+                                            <a class="btn btn-success" href="{{ $serviceImage->id }}">Edit</a>
+                                            <button class="btn btn-danger">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </form>
+                    @else
+                        <p>not services</p>
+                    @endunless
+                </div>
+            </div> --}}
 
             <!--  BEGIN CUSTOM SCRIPTS FILE  -->
             <x-slot:footerFiles>

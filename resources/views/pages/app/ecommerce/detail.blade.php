@@ -57,10 +57,10 @@
                                         </ul>
                                     </div>
                                 </div>
-
                             </div>
 
-                            <div class="col-xxl-4 col-xl-5 col-lg-12 col-md-12 col-12 mt-xl-0 mt-5 align-self-center">
+                            <div
+                                class="col-xxl-4 col-xl-5 col-lg-12 col-md-12 col-12 mt-xl-0 mt-5 align-self-center text-center">
                                 <div class="product-details-content">
                                     <h3 class="product-title mb-0">{{ $service->title }}</h3>
                                     <div class="review mb-4">
@@ -78,44 +78,27 @@
                                     <hr class="mb-4">
 
                                     <div class="row quantity-selector mb-4">
-                                        <div class="col-xl-6 col-lg-6 col-sm-6 mt-sm-3"> {{ $service->content }}</div>
+                                        {{ $service->content }}
                                     </div>
 
                                     <hr class="mb-5 mt-4">
 
-                                    <hr class="mb-4">
-
-                                    <button type="submit" class="btn btn-primary w-100 btn-lg">
-                                        <span class="btn-text-inner">Edit</span>
-                                    </button>
-                                    <button type="submit" class="btn btn-primary w-100 btn-lg">
-                                        <span class="btn-text-inner">Delete</span>
-                                    </button>
-
-                                    <hr class="mb-5 mt-4">
-
-                                    <div class="action-button text-center">
-                                        <div class="row">
-                                            <form
-                                                action="{{ getRouterValue() }}/app/ecommerce/detail/{{ $service->id }}/add-service-image"
-                                                method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="col-xxl-7 col-xl-7 col-sm-6 mb-sm-0 mb-3">
-                                                    <div class="row mb-4">
-                                                        <div class="col-sm-12">
-                                                            <input type="file" name="img" class="form-control">
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-primary w-100 btn-lg">
-                                                        <span class="btn-text-inner">Add Image</span>
-                                                    </button>
+                                    <h4>Add Image</h4>
+                                    <form
+                                        action="{{ getRouterValue() }}/app/ecommerce/detail/{{ $service->id }}/add-service-image"
+                                        method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="col-xxl-12 col-xl-7 col-sm-6 mb-sm-0 mb-3">
+                                            <div class="row mb-4">
+                                                <div class="col-sm-12">
+                                                    <input type="file" name="img" class="form-control">
                                                 </div>
-                                            </form>
-                                            {{-- <div class="col-xxl-5 col-xl-5 col-sm-6">
-                                                <button class="btn btn-success w-100 btn-lg">Buy Now</button>
-                                            </div> --}}
+                                            </div>
+                                            <button type="submit" class="btn btn-primary w-100 btn-lg">
+                                                <span class="btn-text-inner">Submit</span>
+                                            </button>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

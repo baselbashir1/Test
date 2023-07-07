@@ -12,36 +12,16 @@
             <!-- END GLOBAL MANDATORY STYLES -->
 
             <div class="row layout-top-spacing">
-                <div class="col-lg-3 col-md-3 col-sm-3 mb-4">
+                <div class="col-lg-6 col-md-3 col-sm-3 mb-4">
                     <input id="t-text" type="text" name="txt" placeholder="Search" class="form-control"
                         required="">
                 </div>
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 mb-4 ms-auto">
-                    <select class="form-select form-select" aria-label="Default select example">
-                        <option selected="">All Category</option>
-                        <option value="3">Apperal</option>
-                        <option value="1">Electronics</option>
-                        <option value="2">Clothing</option>
-                        <option value="3">Accessories</option>
-                        <option value="3">Organic</option>
-                    </select>
-                </div>
-
-                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-3 mb-4">
-                    <select class="form-select form-select" aria-label="Default select example">
-                        <option selected="">Sort By</option>
-                        <option value="1">Low to High Price</option>
-                        <option value="2">Most Viewed</option>
-                        <option value="3">Hight to Low Price</option>
-                        <option value="3">On Sale</option>
-                        <option value="3">Newest</option>
-                    </select>
+                <div class="col-xl-6 col-lg-6 col-md-3 col-sm-3 mb-4 ms-auto">
+                    <a href="{{ getRouterValue() }}/app/ecommerce/add" class="btn btn-primary w-100 btn-lg mb-4">
+                        <span class="btn-text-inner">Add New Service</span>
+                    </a>
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary w-100 btn-lg">
-                <span class="btn-text-inner">Add Service</span>
-            </button>
 
             <div class="row">
                 @unless (count($services) == 0)
@@ -50,45 +30,40 @@
                             <a class="card style-6" href="{{ getRouterValue() }}/app/ecommerce/detail/{{ $service->id }}">
                                 <span class="badge badge-primary">NEW</span>
                                 <img src="{{ $service->picture ? asset('storage/' . $service->picture) : asset('no-image.png') }}"
-                                    class="card-img-top" alt="...">
+                                    class="card-img-top" alt="..." style="width: 182px; height: 182px;">
                                 <div class="card-footer">
                                     <div class="row">
-                                        <div class="col-12 mb-4">
+                                        <div class="col-12 mb-2">
                                             <b>{{ $service->title }}</b>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="badge--group">
-
-                                                <a href="{{ getRouterValue() }}/app/ecommerce/edit/{{ $service->id }}"
-                                                    class="btn btn-primary w-100 btn-lg">
-                                                    <span class="btn-text-inner">Edit</span>
-                                                </a>
-                                                <a type="submit" class="btn btn-primary w-100 btn-lg">
-                                                    <span class="btn-text-inner">Delete</span>
-                                                </a>
-
-                                                {{-- <button type="submit" class="btn btn-primary w-100 btn-lg">
-                                                    <span class="btn-text-inner">Edit</span>
-                                                </button>
-                                                <button type="submit" class="btn btn-primary w-100 btn-lg">
-                                                    <span class="btn-text-inner">Delete</span>
-                                                </button> --}}
-
-                                            </div>
-                                        </div>
-                                        <div class="col-9 text-end">
-                                            <div class="pricing d-flex justify-content-end">
-                                                <p class="text-success mb-0">$150.00</p>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </a>
+                            <div class="container mt-1">
+                                <div class="card">
+                                    <div class="btn btn-success mb-1">
+                                        <a href="{{ getRouterValue() }}/app/ecommerce/edit/{{ $service->id }}">
+                                            Edit
+                                        </a>
+                                    </div>
+                                    <div>
+                                        <form method="POST"
+                                            action="{{ getRouterValue() }}/app/ecommerce/delete/{{ $service->id }}">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger" style="width: 157px;">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
                     {{-- {{ $services->links() }} --}}
                 @else
-                    <p>No services found</p>
+                    <div class="container text-center">
+                        <p>No services found</p>
+                    </div>
                 @endunless
 
             </div>

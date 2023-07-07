@@ -65,9 +65,9 @@
                     <li class="{{ Request::routeIs('analytics') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/dashboard/analytics"> Analytics </a>
                     </li>
-                    <li class="{{ Request::routeIs('sales') ? 'active' : '' }}">
+                    {{-- <li class="{{ Request::routeIs('sales') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/dashboard/sales"> Sales </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 
@@ -76,7 +76,7 @@
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="feather feather-minus">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg><span>APPLICATIONS</span></div>
+                    </svg><span>SERVICES</span></div>
             </li>
 
             <li class="menu {{ Request::is('*/app/ecommerce/*') ? 'active' : '' }}">
@@ -90,7 +90,7 @@
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                         </svg>
-                        <span>Services</span>
+                        <span>Services Management</span>
                     </div>
                     <div>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -105,22 +105,22 @@
                     <li class="{{ Request::routeIs('ecommerce-shop') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/app/ecommerce/shop"> Shop </a>
                     </li>
-                    <li class="{{ Request::routeIs('ecommerce-detail') ? 'active' : '' }}">
+                    {{-- <li class="{{ Request::routeIs('ecommerce-detail') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/app/ecommerce/detail"> Product </a>
-                    </li>
+                    </li> --}}
                     <li class="{{ Request::routeIs('ecommerce-list') ? 'active' : '' }}">
-                        <a href="{{ getRouterValue() }}/app/ecommerce/list"> List </a>
+                        <a href="{{ getRouterValue() }}/app/ecommerce/services"> Services Table </a>
                     </li>
-                    <li class="{{ Request::routeIs('ecommerce-add') ? 'active' : '' }}">
+                    {{-- <li class="{{ Request::routeIs('ecommerce-add') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/app/ecommerce/add"> Create </a>
-                    </li>
-                    <li class="{{ Request::routeIs('ecommerce-edit') ? 'active' : '' }}">
+                    </li> --}}
+                    {{-- <li class="{{ Request::routeIs('ecommerce-edit') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/app/ecommerce/edit"> Edit </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
 
-            <li class="menu {{ Request::is('*/app/blog/*') ? 'active' : '' }}">
+            {{-- <li class="menu {{ Request::is('*/app/blog/*') ? 'active' : '' }}">
                 <a href="#blog" data-bs-toggle="collapse"
                     aria-expanded="{{ Request::is('*/app/blog/*') ? 'true' : 'false' }}" class="dropdown-toggle">
                     <div class="">
@@ -151,9 +151,9 @@
                         <a href="{{ getRouterValue() }}/app/blog/list"> List </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
 
-            <li class="menu {{ Request::routeIs('widgets') ? 'active' : '' }}">
+            {{-- <li class="menu {{ Request::routeIs('widgets') ? 'active' : '' }}">
                 <a href="{{ getRouterValue() }}/widgets" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -166,7 +166,7 @@
                         <span>Widgets</span>
                     </div>
                 </a>
-            </li>
+            </li> --}}
 
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"

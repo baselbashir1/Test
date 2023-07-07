@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('picture', 2000);
             $table->string('icon', 2000)->nullable();
             $table->string('content');
+            // $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->timestamps();
         });
     }
