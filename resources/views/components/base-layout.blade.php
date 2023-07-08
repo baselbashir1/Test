@@ -110,11 +110,13 @@
             // Real Logins
             !Request::routeIs('login'))
 
-        @if (!Request::routeIs('blank'))
-            <!--  BEGIN NAVBAR  -->
-            <x-navbar.style-vertical-menu classes="{{ $isBoxed ? 'container-xxl' : '' }}" />
-            <!--  END NAVBAR  -->
-        @endif
+        @auth
+            @if (!Request::routeIs('blank'))
+                <!--  BEGIN NAVBAR  -->
+                <x-navbar.style-vertical-menu classes="{{ $isBoxed ? 'container-xxl' : '' }}" />
+                <!--  END NAVBAR  -->
+            @endif
+        @endauth
 
         <!--  BEGIN MAIN CONTAINER  -->
         <div class="main-container " id="container">
@@ -123,11 +125,13 @@
             <x-layout-overlay />
             <!--  END LOADER  -->
 
-            @if (!Request::routeIs('blank'))
-                <!--  BEGIN SIDEBAR  -->
-                <x-menu.vertical-menu />
-                <!--  END SIDEBAR  -->
-            @endif
+            @auth
+                @if (!Request::routeIs('blank'))
+                    <!--  BEGIN SIDEBAR  -->
+                    <x-menu.vertical-menu />
+                    <!--  END SIDEBAR  -->
+                @endif
+            @endauth
 
             <!--  BEGIN CONTENT AREA  -->
             <div id="content" class="main-content {{ Request::routeIs('blank') ? 'ms-0 mt-0' : '' }}">
