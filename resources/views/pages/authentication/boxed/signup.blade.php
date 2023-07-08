@@ -31,20 +31,22 @@
                                             <p>Enter your email and password to register</p>
 
                                         </div>
-                                        <form method="POST" action="/modern-dark-menu/authentication/boxed/register">
+                                        <form method="POST" action="{{ getRouterValue() }}/register">
                                             @csrf
                                             <div class="col-md-12">
                                                 <div class="mb-3">
                                                     <label class="form-label">Name</label>
-                                                    <input type="text" class="form-control add-billing-address-input"
-                                                        name="name" value="{{ old('name') }}">
+                                                    <input type="text"
+                                                        class="form-control add-billing-address-input">
+                                                    @error('name')
+                                                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="mb-3">
                                                     <label class="form-label">Email</label>
-                                                    <input type="email" class="form-control" name="email"
-                                                        value="{{ old('email') }}">
+                                                    <input type="email" class="form-control" name="email">
                                                     @error('email')
                                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                                     @enderror
@@ -53,8 +55,7 @@
                                             <div class="col-12">
                                                 <div class="mb-3">
                                                     <label class="form-label">Password</label>
-                                                    <input type="password" class="form-control" name="password"
-                                                        value="{{ old('password') }}">
+                                                    <input type="password" class="form-control" name="password">
                                                     @error('password')
                                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                                     @enderror
@@ -64,8 +65,7 @@
                                                 <div class="mb-3">
                                                     <label class="form-label">Confirm Password</label>
                                                     <input type="password" class="form-control"
-                                                        name="password_confirmation"
-                                                        value="{{ old('password_confirmation') }}">
+                                                        name="password_confirmation">
                                                     @error('password_confirmation')
                                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                                     @enderror
@@ -95,8 +95,8 @@
                                         <div class="col-12">
                                             <div class="text-center">
                                                 <p class="mb-0">Already have an account ? <a
-                                                        href="{{ getRouterValue() }}/authentication/boxed/sign-in"
-                                                        class="text-warning">Sign in</a></p>
+                                                        href="{{ getRouterValue() }}/sign-in" class="text-warning">Sign
+                                                        in</a></p>
                                             </div>
                                         </div>
 

@@ -28,7 +28,7 @@
             <!-- END GLOBAL MANDATORY STYLES -->
 
             <div class="row mb-4 layout-spacing layout-top-spacing">
-                <form method="POST" action="{{ getRouterValue() }}/app/ecommerce/edit-service/{{ $service->id }}"
+                <form method="POST" action="{{ getRouterValue() }}/edit-service/{{ $service->id }}"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -96,7 +96,7 @@
                                     </div> --}}
                                 </div>
                                 <form method="POST"
-                                    action="{{ getRouterValue() }}/app/ecommerce/edit/{{ $service->id }}/edit-service-image/{{ $serviceImage->id }}"
+                                    action="{{ getRouterValue() }}/edit/{{ $service->id }}/edit-service-image/{{ $serviceImage->id }}"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="container mt-2 mb-2">
@@ -110,7 +110,7 @@
                                     </div>
                                 </form>
                                 <form method="POST"
-                                    action="{{ getRouterValue() }}/app/ecommerce/delete/{{ $service->id }}/delete-service-image/{{ $serviceImage->id }}">
+                                    action="{{ getRouterValue() }}/delete/{{ $service->id }}/delete-service-image/{{ $serviceImage->id }}">
                                     @csrf
                                     <div class="container mt-2">
                                         <button type="submit" class="btn btn-danger w-100">

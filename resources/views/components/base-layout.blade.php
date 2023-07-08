@@ -21,12 +21,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>{{ $pageTitle }}</title>
     <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/images/favicon.ico') }}" />
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
-    <!-- Font Awesome CDN -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
-    <!-- Bootstrap-Iconpicker -->
-    <link rel="stylesheet" href="dist/css/bootstrap-iconpicker.min.css" />
     @vite(['resources/scss/layouts/vertical-light-menu/light/loader.scss'])
 
     @if (Request::is('modern-light-menu/*'))
@@ -36,6 +30,14 @@
     @elseif (Request::is('collapsible-menu/*'))
         @vite(['resources/layouts/collapsible-menu/loader.js'])
     @endif
+
+    {{-- @if (Request::is('en/modern-light-menu/*'))
+        @vite(['resources/layouts/vertical-light-menu/loader.js'])
+    @elseif (Request::is('en/modern-dark-menu/*'))
+        @vite(['resources/layouts/vertical-dark-menu/loader.js'])
+    @elseif (Request::is('en/collapsible-menu/*'))
+        @vite(['resources/layouts/collapsible-menu/loader.js'])
+    @endif --}}
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/bootstrap/bootstrap.min.css') }}">
@@ -173,13 +175,6 @@
         <script src="{{ asset('plugins/mousetrap/mousetrap.min.js') }}"></script>
         <script src="{{ asset('plugins/waves/waves.min.js') }}"></script>
         <script src="{{ asset('plugins/highlight/highlight.pack.js') }}"></script>
-        <!-- jQuery CDN -->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <!-- Bootstrap CDN -->
-        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js">
-        </script>
-        <!-- Bootstrap-Iconpicker Bundle -->
-        <script type="text/javascript" src="dist/js/bootstrap-iconpicker.bundle.min.js"></script>
         @if ($scrollspy == 1)
             @vite(['resources/assets/js/scrollspyNav.js'])
         @endif
@@ -191,6 +186,15 @@
         @elseif (Request::is('collapsible-menu/*'))
             @vite(['resources/layouts/collapsible-menu/app.js'])
         @endif
+
+        {{-- @if (Request::is('en/modern-light-menu/*'))
+            @vite(['resources/layouts/vertical-light-menu/app.js'])
+        @elseif (Request::is('en/modern-dark-menu/*'))
+            @vite(['resources/layouts/vertical-dark-menu/app.js'])
+        @elseif (Request::is('en/collapsible-menu/*'))
+            @vite(['resources/layouts/collapsible-menu/app.js'])
+        @endif --}}
+
         <!-- END GLOBAL MANDATORY STYLES -->
 
     @endif

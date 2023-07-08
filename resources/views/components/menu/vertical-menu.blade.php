@@ -16,7 +16,7 @@
         <div class="navbar-nav theme-brand flex-row  text-center">
             <div class="nav-logo">
                 <div class="nav-item theme-logo">
-                    <a href="{{ getRouterValue() }}/dashboard/analytics">
+                    <a href="{{ getRouterValue() }}/dashboard">
                         <img src="{{ Vite::asset('resources/images/logo.svg') }}" class="navbar-logo logo-dark"
                             alt="logo">
                         <img src="{{ Vite::asset('resources/images/logo2.svg') }}" class="navbar-logo logo-light"
@@ -24,7 +24,7 @@
                     </a>
                 </div>
                 <div class="nav-item theme-text">
-                    <a href="{{ getRouterValue() }}/dashboard/analytics" class="nav-link"> CORK </a>
+                    <a href="{{ getRouterValue() }}/dashboard" class="nav-link"> CORK </a>
                 </div>
             </div>
             <div class="nav-item sidebar-toggle">
@@ -40,7 +40,23 @@
         </div>
         <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories" id="accordionExample">
-            <li class="menu {{ Request::is('*/dashboard/*') ? 'active' : '' }}">
+
+            <li class="menu">
+                <a href="{{ getRouterValue() }}/dashboard" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-shopping-cart">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+            </li>
+
+            {{-- <li class="menu {{ Request::is('*/dashboard/*') ? 'active' : '' }}">
                 <a href="#dashboard" data-bs-toggle="collapse"
                     aria-expanded="{{ Request::is('*/dashboard/*') ? 'true' : 'false' }}" class="dropdown-toggle">
                     <div class="">
@@ -65,11 +81,8 @@
                     <li class="{{ Request::routeIs('analytics') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/dashboard/analytics"> Analytics </a>
                     </li>
-                    {{-- <li class="{{ Request::routeIs('sales') ? 'active' : '' }}">
-                        <a href="{{ getRouterValue() }}/dashboard/sales"> Sales </a>
-                    </li> --}}
                 </ul>
-            </li>
+            </li> --}}
 
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -79,9 +92,8 @@
                     </svg><span>SERVICES</span></div>
             </li>
 
-            <li class="menu {{ Request::is('*/app/ecommerce/*') ? 'active' : '' }}">
-                <a href="#ecommerce" data-bs-toggle="collapse"
-                    aria-expanded="{{ Request::is('*/app/ecommerce/*') ? 'true' : 'false' }}" class="dropdown-toggle">
+            {{-- <li class="menu active">
+                <a href="#ecommerce" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -100,24 +112,43 @@
                         </svg>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled {{ Request::is('*/app/ecommerce/*') ? 'show' : '' }}"
-                    id="ecommerce" data-bs-parent="#accordionExample">
-                    <li class="{{ Request::routeIs('ecommerce-shop') ? 'active' : '' }}">
-                        <a href="{{ getRouterValue() }}/app/ecommerce/shop"> Shop </a>
+                <ul class="collapse submenu list-unstyled" id="ecommerce" data-bs-parent="#accordionExample">
+                    <li>
+                        <a href="{{ getRouterValue() }}/shop"> Shop </a>
                     </li>
-                    {{-- <li class="{{ Request::routeIs('ecommerce-detail') ? 'active' : '' }}">
-                        <a href="{{ getRouterValue() }}/app/ecommerce/detail"> Product </a>
-                    </li> --}}
-                    <li class="{{ Request::routeIs('ecommerce-list') ? 'active' : '' }}">
-                        <a href="{{ getRouterValue() }}/app/ecommerce/services"> Services Table </a>
+                    <li>
+                        <a href="{{ getRouterValue() }}/services"> Services Table </a>
                     </li>
-                    {{-- <li class="{{ Request::routeIs('ecommerce-add') ? 'active' : '' }}">
-                        <a href="{{ getRouterValue() }}/app/ecommerce/add"> Create </a>
-                    </li> --}}
-                    {{-- <li class="{{ Request::routeIs('ecommerce-edit') ? 'active' : '' }}">
-                        <a href="{{ getRouterValue() }}/app/ecommerce/edit"> Edit </a>
-                    </li> --}}
                 </ul>
+            </li> --}}
+
+            {{-- <li class="menu">
+                <a href="{{ getRouterValue() }}/shop" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-shopping-cart">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span>Shop</span>
+                    </div>
+                </a>
+            </li> --}}
+            <li class="menu">
+                <a href="{{ getRouterValue() }}/services" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="feather feather-shopping-cart">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <span>Services Table</span>
+                    </div>
+                </a>
             </li>
 
             {{-- <li class="menu {{ Request::is('*/app/blog/*') ? 'active' : '' }}">
@@ -168,15 +199,15 @@
                 </a>
             </li> --}}
 
-            <li class="menu menu-heading">
+            {{-- <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg><span>USER PROFILE</span></div>
-            </li>
+            </li> --}}
 
-            <li class="menu {{ Request::is('*/user/*') ? 'active' : '' }}">
+            {{-- <li class="menu {{ Request::is('*/user/*') ? 'active' : '' }}">
                 <a href="#users" data-bs-toggle="collapse"
                     aria-expanded="{{ Request::is('*/user/*') ? 'true' : 'false' }}" class="dropdown-toggle">
                     <div class="">
@@ -203,11 +234,8 @@
                     <li class="{{ Request::routeIs('profile') ? 'active' : '' }}">
                         <a href="{{ getRouterValue() }}/user/profile"> Profile </a>
                     </li>
-                    {{-- <li class="{{ Request::routeIs('settings') ? 'active' : '' }}">
-                        <a href="{{ getRouterValue() }}/user/settings"> Account Settings </a>
-                    </li> --}}
                 </ul>
-            </li>
+            </li> --}}
 
         </ul>
 

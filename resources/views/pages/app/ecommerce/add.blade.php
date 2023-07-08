@@ -28,8 +28,7 @@
             <!-- END GLOBAL MANDATORY STYLES -->
 
             <div class="row mb-4 layout-spacing layout-top-spacing">
-                <form method="POST" action="{{ getRouterValue() }}/app/ecommerce/add-service"
-                    enctype="multipart/form-data">
+                <form method="POST" action="{{ getRouterValue() }}/add-service" enctype="multipart/form-data">
                     @csrf
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="widget-content widget-content-area ecommerce-create-section">
@@ -40,6 +39,9 @@
                                     <input type="text" name="title" class="form-control" id="inputEmail3"
                                         placeholder="Service Title">
                                 </div>
+                                @error('title')
+                                    <p class="mt-2">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="row mb-4">
@@ -48,6 +50,9 @@
                                     <input type="file" name="picture" class="form-control" id="inputEmail3"
                                         placeholder="Service Picture">
                                 </div>
+                                @error('picture')
+                                    <p class="mt-2">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="row mb-4">
@@ -55,6 +60,9 @@
                                     <label for="content">Service Content</label>
                                     <textarea name="content" cols="30" rows="10" class="form-control" placeholder="Service Content"></textarea>
                                 </div>
+                                @error('content')
+                                    <p class="mt-2">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             <div class="row mb-4">
@@ -63,6 +71,9 @@
                                     <input type="file" name="service_image" class="form-control" id="inputEmail3"
                                         placeholder="Service Picture">
                                 </div>
+                                @error('service_image')
+                                    <p class="mt-2">{{ $message }}</p>
+                                @enderror
                             </div>
 
                             {{-- <div class="row">

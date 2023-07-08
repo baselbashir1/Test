@@ -84,8 +84,7 @@
                                     <hr class="mb-5 mt-4">
 
                                     <h4>Add Image</h4>
-                                    <form
-                                        action="{{ getRouterValue() }}/app/ecommerce/detail/{{ $service->id }}/add-service-image"
+                                    <form action="{{ getRouterValue() }}/detail/{{ $service->id }}/add-service-image"
                                         method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-xxl-12 col-xl-7 col-sm-6 mb-sm-0 mb-3">

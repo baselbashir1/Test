@@ -44,8 +44,8 @@
 
         <ul class="navbar-item flex-row ms-lg-auto ms-0">
 
-            <li class="nav-item dropdown language-dropdown">
-                <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown"
+            <ul class="nav-item dropdown language-dropdown">
+                {{-- <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{{ Vite::asset('resources/images/1x1/us.svg') }}" class="flag-width" alt="flag">
                 </a>
@@ -56,8 +56,19 @@
                     <a class="dropdown-item d-flex" href="javascript:void(0);"><img
                             src="{{ Vite::asset('resources/images/1x1/qa.svg') }}" class="flag-width" alt="flag">
                         <span class="align-self-center">&nbsp;Arabic</span></a>
-                </div>
-            </li>
+                </div> --}}
+                {{-- <ul> --}}
+                @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <li>
+                        <a rel="alternate" hreflang="{{ $localeCode }}"
+                            href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            {{ $properties['native'] }}
+                            {{ $localeCode == LaravelLocalization::getCurrentLocale() ? 'active' : '' }}
+                        </a>
+                    </li>
+                @endforeach
+                {{-- </ul> --}}
+            </ul>
 
             <li class="nav-item theme-toggle-item">
                 <a href="javascript:void(0);" class="nav-link theme-toggle">
@@ -312,8 +323,8 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="dropdown-item">
-                        <a href="user-profile.html">
+                    <div class="dropdown-item mb-2">
+                        <a href="{{ getRouterValue() }}/user/profile">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
@@ -321,7 +332,7 @@
                                 <circle cx="12" cy="7" r="4"></circle>
                             </svg> <span>Profile</span>
                         </a>
-                    </div> --}}
+                    </div>
                     {{-- <div class="dropdown-item">
                         <a href="app-mailbox.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -347,7 +358,7 @@
                     </div> --}}
                     @auth
                         <div class="dropdown-item">
-                            <form action="{{ getRouterValue() }}/authentication/boxed/logout" method="POST">
+                            <form action="{{ getRouterValue() }}/logout" method="POST">
                                 @csrf
                                 <button type="submit">
                                     Log Out
@@ -356,7 +367,7 @@
                         </div>
                     @else
                         <div class="dropdown-item">
-                            <a href="{{ getRouterValue() }}/authentication/boxed/sign-in">
+                            <a href="{{ getRouterValue() }}/sign-in">
                                 Log In
                             </a>
                         </div>

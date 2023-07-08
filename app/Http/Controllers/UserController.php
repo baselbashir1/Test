@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,20 +13,21 @@ class UserController extends Controller
         return view('pages.authentication.boxed.signup', ['title' => 'SignUp Cover | CORK - Multipurpose Bootstrap Dashboard Template', 'breadcrumb' => 'This Breadcrumb']);
     }
 
-    public function register(Request $request)
+    public function register(UserRequest $request)
     {
-        $formFields = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:6'
-        ]);
+        $formFields = $request->all();
+        // $formFields = $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email|unique:users',
+        //     'password' => 'required|confirmed|min:6'
+        // ]);
 
         $formFields['password'] = bcrypt($formFields['password']);
 
         $user = User::create($formFields);
         auth()->login($user);
 
-        return redirect('/modern-dark-menu/dashboard/analytics');
+        return redirect(getRouterValue() . '/dashboard');
     }
 
     public function viewSignIn()
@@ -43,7 +45,7 @@ class UserController extends Controller
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('/modern-dark-menu/dashboard/analytics');
+            return redirect(getRouterValue() . '/dashboard');
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
@@ -56,6 +58,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/modern-dark-menu/authentication/boxed/sign-in');
+        return redirect(getRouterValue() . '/sign-in');
     }
 }

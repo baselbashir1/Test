@@ -31,13 +31,12 @@
                                             <p>Enter your email and password to login</p>
 
                                         </div>
-                                        <form method="POST" action="/modern-dark-menu/authentication/boxed/login">
+                                        <form method="POST" action="{{ getRouterValue() }}/login">
                                             @csrf
                                             <div class="col-md-12">
                                                 <div class="mb-3">
                                                     <label class="form-label">Email</label>
-                                                    <input type="email" class="form-control" name="email"
-                                                        value="{{ old('email') }}">
+                                                    <input type="email" class="form-control" name="email">
                                                     @error('email')
                                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                                     @enderror
@@ -46,8 +45,7 @@
                                             <div class="col-12">
                                                 <div class="mb-4">
                                                     <label class="form-label">Password</label>
-                                                    <input type="password" class="form-control" name="password"
-                                                        value="{{ old('password') }}">
+                                                    <input type="password" class="form-control" name="password">
                                                     @error('password')
                                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                                     @enderror
@@ -76,8 +74,8 @@
                                         <div class="col-12">
                                             <div class="text-center">
                                                 <p class="mb-0">Dont't have an account ? <a
-                                                        href="{{ getRouterValue() }}/authentication/boxed/sign-up"
-                                                        class="text-warning">Sign Up</a></p>
+                                                        href="{{ getRouterValue() }}/sign-up" class="text-warning">Sign
+                                                        Up</a></p>
                                             </div>
                                         </div>
 

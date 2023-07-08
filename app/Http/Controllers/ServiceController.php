@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
 use App\Models\ServiceImage;
 use Illuminate\Http\Request;
@@ -10,6 +11,8 @@ class ServiceController extends Controller
 {
     public function index()
     {
+        // App::getLocate();
+
         $services = Service::all();
         // $services = Service::latest()->filter(request(['tag', 'search']))->paginate(5);
 
@@ -35,16 +38,17 @@ class ServiceController extends Controller
         return view('pages.app.ecommerce.add', ['title' => 'Ecommerce Create | CORK - Multipurpose Bootstrap Dashboard Template ', 'breadcrumb' => 'This Breadcrumb']);
     }
 
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
-        $formFields = $request->validate([
-            'title' => 'required',
-            'picture' => 'required',
-            // 'icon' => 'required',
-            'content' => 'required',
-            'service_image' => 'required',
-            // 'service_id' => 'required'
-        ]);
+        $formFields = $request->all();
+        // $formFields = $request->validate([
+        //     'title' => 'required',
+        //     'picture' => 'required',
+        //     // 'icon' => 'required',
+        //     'content' => 'required',
+        //     'service_image' => 'required',
+        //     // 'service_id' => 'required'
+        // ]);
 
 
         if ($request->hasFile('picture')) {
@@ -55,9 +59,9 @@ class ServiceController extends Controller
             $formFields['service_image'] = $request->file('service_image')->store('images', 'public');
         }
 
-        if ($request->hasFile('icon')) {
-            $formFields['icon'] = $request->file('icon')->store('icons', 'public');
-        }
+        // if ($request->hasFile('icon')) {
+        //     $formFields['icon'] = $request->file('icon')->store('icons', 'public');
+        // }
 
         //images
 
@@ -73,7 +77,7 @@ class ServiceController extends Controller
             'image' => $formFields['service_image'],
             'service_id' => $service_id
         ]);
-        return redirect(getRouterValue() . '/app/ecommerce/shop');
+        return redirect(getRouterValue() . '/dashboard');
     }
 
     public function edit(Service $service)
@@ -108,9 +112,9 @@ class ServiceController extends Controller
             $formFields['service_image'] = $request->file('service_image')->store('images', 'public');
         }
 
-        if ($request->hasFile('icon')) {
-            $formFields['icon'] = $request->file('icon')->store('icons', 'public');
-        }
+        // if ($request->hasFile('icon')) {
+        //     $formFields['icon'] = $request->file('icon')->store('icons', 'public');
+        // }
 
         $service->update($formFields);
 
@@ -124,7 +128,7 @@ class ServiceController extends Controller
         //     'service_id' => $service->id
         // ]);
 
-        return redirect(getRouterValue() . '/app/ecommerce/shop');
+        return redirect(getRouterValue() . '/dashboard');
     }
 
     public function destroy(Request $request, Service $service)

@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('title', 2000);
             $table->string('picture', 2000);
             $table->string('icon', 2000)->nullable();
+            // $table->foreign('user_id')->references('id')->on('sections')->onDelete('cascade');
             $table->string('content');
             // $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
+            // $table->foreignId('created_by')->references('id')->on('users');
             $table->timestamps();
         });
     }
