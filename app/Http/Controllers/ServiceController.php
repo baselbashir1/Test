@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ServiceRequest;
 use App\Models\Service;
 use App\Models\ServiceImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use App\Http\Requests\ServiceRequest;
 
 class ServiceController extends Controller
 {
@@ -13,8 +14,8 @@ class ServiceController extends Controller
     {
         $services = Service::all();
 
-        // if (App::getLocate() == 'en')
-        return view('pages.app.ecommerce.shop', ['title' => 'Dashboard'], ['services' => $services]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.shop', ['title' => 'Dashboard'], ['services' => $services]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.shop', ['title' => 'Dashboard'], ['services' => $services]);
     }
 
     public function services()
@@ -22,18 +23,21 @@ class ServiceController extends Controller
         $services = Service::all();
         $serviceImages = ServiceImage::all();
 
-        return view('pages.app.ecommerce.list', ['title' => 'Services'], ['services' => $services, 'serviceImages' => $serviceImages]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.list', ['title' => 'Services'], ['services' => $services, 'serviceImages' => $serviceImages]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.list', ['title' => 'Services'], ['services' => $services, 'serviceImages' => $serviceImages]);
     }
 
     public function show(Service $service)
     {
         $serviceImages = ServiceImage::where('service_id', $service->id)->get();
-        return view('pages.app.ecommerce.detail', ['title' => 'Service Details'], ['service' => $service, 'serviceImages' => $serviceImages]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.detail', ['title' => 'Service Details'], ['service' => $service, 'serviceImages' => $serviceImages]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.detail', ['title' => 'Service Details'], ['service' => $service, 'serviceImages' => $serviceImages]);
     }
 
     public function create()
     {
-        return view('pages.app.ecommerce.add', ['title' => 'Add Service']);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.add', ['title' => 'Add Service']);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.add', ['title' => 'Add Service']);
     }
 
     public function store(ServiceRequest $request)
@@ -58,15 +62,17 @@ class ServiceController extends Controller
             'image' => $formFields['service_image'],
             'service_id' => $service_id
         ]);
-        return redirect('/modern-dark-menu/dashboard');
-        // return redirect(getRouterValue() . '/dashboard');
+
+        if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/dashboard');
+        if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/dashboard');
     }
 
     public function edit(Service $service)
     {
         $serviceImages = ServiceImage::where('service_id', $service->id)->get();
 
-        return view('pages.app.ecommerce.edit', ['title' => 'Edit Service'], ['service' => $service, 'serviceImages' => $serviceImages]);
+        if (app()->getLocale() == 'en') return view('pages.app.ecommerce.edit', ['title' => 'Edit Service'], ['service' => $service, 'serviceImages' => $serviceImages]);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.app.ecommerce.edit', ['title' => 'Edit Service'], ['service' => $service, 'serviceImages' => $serviceImages]);
     }
 
     public function update(Request $request, Service $service)
@@ -87,8 +93,8 @@ class ServiceController extends Controller
 
         $service->update($formFields);
 
-        return redirect('/modern-dark-menu/dashboard');
-        // return redirect(getRouterValue() . '/dashboard');
+        if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/dashboard');
+        if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/dashboard');
     }
 
     public function destroy(Request $request, Service $service)

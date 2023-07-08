@@ -34,7 +34,6 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    {{-- <th class="checkbox-column"></th> --}}
                                     <th>{{ __('trans.service_title') }}</th>
                                     <th>{{ __('trans.service_picture') }}</th>
                                     <th>{{ __('trans.service_content') }}</th>
@@ -45,7 +44,6 @@
                                 @unless (count($services) == 0)
                                     @foreach ($services as $service)
                                         <tr>
-                                            {{-- <td>{{ $service->id }}</td> --}}
                                             <td>{{ $service->title }}</td>
                                             <td>
                                                 <div class="d-flex justify-content-left align-items-center">
@@ -57,22 +55,25 @@
                                             </td>
                                             <td>{{ $service->content }}</td>
                                             <td class="text-center">
-                                                <a href="/modern-dark-menu/detail/{{ $service->id }}"
-                                                    class="btn btn-primary">{{ __('trans.view') }}</a>
-                                                <a href="/modern-dark-menu/edit/{{ $service->id }}"
-                                                    class="btn btn-success">{{ __('trans.edit') }}</a>
-                                                <form method="POST" class="mt-1"
-                                                    action="/modern-dark-menu/delete/{{ $service->id }}">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger">
-                                                        {{ __('trans.delete') }}
-                                                    </button>
-                                                </form>
+                                                <div style="display: flex">
+                                                    <a href="/modern-dark-menu/detail/{{ $service->id }}"
+                                                        style="width: 50px; height: 40px"
+                                                        class="btn btn-primary mt-2 mb-1"><i class="fas fa-info"></i></a>
+                                                    <a href="/modern-dark-menu/edit/{{ $service->id }}"
+                                                        style="width: 50px; height: 40px" class="btn btn-success m-2"><i
+                                                            class="far fa-edit"></i></a>
+                                                    <form method="POST" class="mt-2"
+                                                        action="/modern-dark-menu/delete/{{ $service->id }}">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-danger"
+                                                            style="width: 50px; height: 40px">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
-                                    {{-- @else
-                                    <P>No Services</P> --}}
                                 @endunless
                             </tbody>
                         </table>

@@ -33,38 +33,36 @@
                                     class="card-img-top" alt="..." style="width: 182px; height: 182px;">
                                 <div class="card-footer">
                                     <div class="row">
-                                        <div class="col-12 mb-2">
+                                        <div class="container">
+                                            <i style="font-size: 20px" class="fab fa-servicestack"></i>
                                             <b>{{ $service->title }}</b>
                                         </div>
                                     </div>
                                 </div>
                             </a>
                             <div class="container mt-1">
-                                <div class="card">
-                                    <div class="btn btn-success mb-1">
-                                        <a href="/modern-dark-menu/edit/{{ $service->id }}" class="text-white">
-                                            {{ __('trans.edit') }}
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <form method="POST" action="/modern-dark-menu/delete/{{ $service->id }}">
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger" style="width: 157px;">
-                                                {{ __('trans.delete') }}
-                                            </button>
-                                        </form>
-                                    </div>
+                                <div class="btn btn-success mb-1" style="width: 75px; height: 35px;">
+                                    <a href="/modern-dark-menu/edit/{{ $service->id }}" class="text-white">
+                                        <i class="far fa-edit"></i>
+                                    </a>
+                                </div>
+                                <div class="btn btn-danger mb-1" style="width: 75px; height: 35px;">
+                                    <form method="POST" action="/modern-dark-menu/delete/{{ $service->id }}">
+                                        @csrf
+                                        <button type="submit"
+                                            style="background-color: transparent; border: transparent; color: white;">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-                    {{-- {{ $services->links() }} --}}
                 @else
                     <div class="container text-center">
                         <p>{{ __('trans.no_services_found') }}</p>
                     </div>
                 @endunless
-
             </div>
 
             <!--  BEGIN CUSTOM SCRIPTS FILE  -->

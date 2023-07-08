@@ -10,7 +10,8 @@ class UserController extends Controller
 {
     public function viewSignUp()
     {
-        return view('pages.authentication.boxed.signup', ['title' => 'SignUp']);
+        if (app()->getLocale() == 'en') return view('pages.authentication.boxed.signup', ['title' => 'SignUp']);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.authentication.boxed.signup', ['title' => 'SignUp']);
     }
 
     public function register(UserRequest $request)
@@ -21,13 +22,14 @@ class UserController extends Controller
         $user = User::create($formFields);
         auth()->login($user);
 
-        return redirect('/modern-dark-menu/dashboard');
-        // return redirect(getRouterValue() . '/dashboard');
+        if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/dashboard');
+        if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/dashboard');
     }
 
     public function viewSignIn()
     {
-        return view('pages.authentication.boxed.signin', ['title' => 'SignIn']);
+        if (app()->getLocale() == 'en') return view('pages.authentication.boxed.signin', ['title' => 'SignIn']);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.authentication.boxed.signin', ['title' => 'SignIn']);
     }
 
     public function login(Request $request)
@@ -40,8 +42,8 @@ class UserController extends Controller
         if (auth()->attempt($formFields)) {
             $request->session()->regenerate();
 
-            return redirect('/modern-dark-menu/dashboard');
-            // return redirect(getRouterValue() . '/dashboard');
+            if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/dashboard');
+            if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/dashboard');
         }
 
         return back()->withErrors(['email' => 'Invalid Credentials'])->onlyInput('email');
@@ -54,7 +56,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/modern-dark-menu/sign-in');
-        // return redirect(getRouterValue() . '/sign-in');
+        if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/sign-in');
+        if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/sign-in');
     }
 }
