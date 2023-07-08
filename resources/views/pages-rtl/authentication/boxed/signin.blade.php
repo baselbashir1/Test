@@ -85,6 +85,6 @@
             <!--  BEGIN CUSTOM SCRIPTS FILE  -->
             <x-slot:footerFiles>
 
-                </x-slot>
+                {{-- </x-slot> --}}
                 <!--  END CUSTOM SCRIPTS FILE  -->
 </x-rtl.base-layout>

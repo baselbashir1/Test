@@ -32,13 +32,13 @@
 
     @vite(['resources/scss/layouts/vertical-light-menu/light/loader.scss'])
 
-    @if (Request::is('rtl/modern-light-menu/*'))
+    {{-- @if (Request::is('rtl/modern-light-menu/*'))
         @vite(['resources/rtl/layouts/vertical-light-menu/loader.js'])
-    @elseif (Request::is('rtl/modern-dark-menu/*'))
-        @vite(['resources/rtl/layouts/vertical-dark-menu/loader.js'])
-    @elseif (Request::is('rtl/collapsible-menu/*'))
+    @elseif (Request::is('rtl/modern-dark-menu/*')) --}}
+    @vite(['resources/rtl/layouts/vertical-dark-menu/loader.js'])
+    {{-- @elseif (Request::is('rtl/collapsible-menu/*'))
         @vite(['resources/rtl/layouts/collapsible-menu/loader.js'])
-    @endif
+    @endif --}}
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins-rtl/bootstrap/bootstrap.rtl.min.css') }}">
@@ -109,11 +109,13 @@
             !Request::routeIs('password-reset') &&
             !Request::routeIs('2Step'))
 
-        @if (!Request::routeIs('blank'))
-            <!--  BEGIN NAVBAR  -->
-            <x-rtl.navbar.style-vertical-menu classes="{{ $isBoxed ? 'container-xxl' : '' }}" />
-            <!--  END NAVBAR  -->
-        @endif
+        @auth
+            @if (!Request::routeIs('blank'))
+                <!--  BEGIN NAVBAR  -->
+                <x-rtl.navbar.style-vertical-menu classes="{{ $isBoxed ? 'container-xxl' : '' }}" />
+                <!--  END NAVBAR  -->
+            @endif
+        @endauth
 
         <!--  BEGIN MAIN CONTAINER  -->
         <div class="main-container " id="container">
@@ -122,11 +124,13 @@
             <x-rtl.layout-overlay />
             <!--  END LOADER  -->
 
-            @if (!Request::routeIs('blank'))
-                <!--  BEGIN SIDEBAR  -->
-                <x-rtl.menu.vertical-menu />
-                <!--  END SIDEBAR  -->
-            @endif
+            @auth
+                @if (!Request::routeIs('blank'))
+                    <!--  BEGIN SIDEBAR  -->
+                    <x-rtl.menu.vertical-menu />
+                    <!--  END SIDEBAR  -->
+                @endif
+            @endauth
 
             <!--  BEGIN CONTENT AREA  -->
             <div id="content" class="main-content {{ Request::routeIs('blank') ? 'ms-0 mt-0' : '' }}">
@@ -185,13 +189,13 @@
             @vite(['resources/rtl/assets/js/scrollspyNav.js'])
         @endif
 
-        @if (Request::is('rtl/modern-light-menu/*'))
+        {{-- @if (Request::is('rtl/modern-light-menu/*'))
             @vite(['resources/rtl/layouts/vertical-light-menu/app.js'])
-        @elseif (Request::is('rtl/modern-dark-menu/*'))
-            @vite(['resources/rtl/layouts/vertical-dark-menu/app.js'])
-        @elseif (Request::is('rtl/collapsible-menu/*'))
+        @elseif (Request::is('rtl/modern-dark-menu/*')) --}}
+        @vite(['resources/rtl/layouts/vertical-dark-menu/app.js'])
+        {{-- @elseif (Request::is('rtl/collapsible-menu/*'))
             @vite(['resources/rtl/layouts/collapsible-menu/app.js'])
-        @endif
+        @endif --}}
 
         <!-- END GLOBAL MANDATORY STYLES -->
 
