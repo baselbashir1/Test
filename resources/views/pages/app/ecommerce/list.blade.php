@@ -22,7 +22,7 @@
 
             <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-6">
-                    <a href="{{ getRouterValue() }}/add" class="btn btn-primary w-100 btn-lg mb-4">
+                    <a href="/modern-dark-menu/add" class="btn btn-primary w-100 btn-lg mb-4">
                         <span class="btn-text-inner">{{ __('trans.add_new_service') }}</span>
                     </a>
                 </div>
@@ -57,12 +57,12 @@
                                             </td>
                                             <td>{{ $service->content }}</td>
                                             <td class="text-center">
-                                                <a href="{{ getRouterValue() }}/detail/{{ $service->id }}"
+                                                <a href="/modern-dark-menu/detail/{{ $service->id }}"
                                                     class="btn btn-primary">{{ __('trans.view') }}</a>
-                                                <a href="{{ getRouterValue() }}/edit/{{ $service->id }}"
+                                                <a href="/modern-dark-menu/edit/{{ $service->id }}"
                                                     class="btn btn-success">{{ __('trans.edit') }}</a>
                                                 <form method="POST" class="mt-1"
-                                                    action="{{ getRouterValue() }}/delete/{{ $service->id }}">
+                                                    action="/modern-dark-menu/delete/{{ $service->id }}">
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">
                                                         {{ __('trans.delete') }}

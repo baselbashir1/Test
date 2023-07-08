@@ -22,21 +22,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>{{ $pageTitle }}</title>
     <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/images/favicon.ico') }}" />
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+    <!-- Bootstrap-Iconpicker -->
+    <link rel="stylesheet" href="dist/css/bootstrap-iconpicker.min.css" />
+
     @vite(['resources/scss/layouts/vertical-light-menu/light/loader.scss'])
 
-    {{-- @if (Request::is('rtl/modern-light-menu/*'))
+    @if (Request::is('rtl/modern-light-menu/*'))
         @vite(['resources/rtl/layouts/vertical-light-menu/loader.js'])
-    @elseif ((Request::is('rtl/modern-dark-menu/*')))
+    @elseif (Request::is('rtl/modern-dark-menu/*'))
         @vite(['resources/rtl/layouts/vertical-dark-menu/loader.js'])
-    @elseif ((Request::is('rtl/collapsible-menu/*')))
-        @vite(['resources/rtl/layouts/collapsible-menu/loader.js'])
-    @endif --}}
-
-    @if (Request::is('ar/modern-light-menu/*'))
-        @vite(['resources/rtl/layouts/vertical-light-menu/loader.js'])
-    @elseif (Request::is('ar/modern-dark-menu/*'))
-        @vite(['resources/rtl/layouts/vertical-dark-menu/loader.js'])
-    @elseif (Request::is('ar/collapsible-menu/*'))
+    @elseif (Request::is('rtl/collapsible-menu/*'))
         @vite(['resources/rtl/layouts/collapsible-menu/loader.js'])
     @endif
 
@@ -172,23 +172,24 @@
         <script src="{{ asset('plugins-rtl/mousetrap/mousetrap.min.js') }}"></script>
         <script src="{{ asset('plugins-rtl/waves/waves.min.js') }}"></script>
         <script src="{{ asset('plugins-rtl/highlight/highlight.pack.js') }}"></script>
+
+        <!-- jQuery CDN -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <!-- Bootstrap CDN -->
+        <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js">
+        </script>
+        <!-- Bootstrap-Iconpicker Bundle -->
+        <script type="text/javascript" src="dist/js/bootstrap-iconpicker.bundle.min.js"></script>
+
         @if ($scrollspy == 1)
             @vite(['resources/rtl/assets/js/scrollspyNav.js'])
         @endif
 
-        {{-- @if (Request::is('rtl/modern-light-menu/*'))
+        @if (Request::is('rtl/modern-light-menu/*'))
             @vite(['resources/rtl/layouts/vertical-light-menu/app.js'])
         @elseif (Request::is('rtl/modern-dark-menu/*'))
             @vite(['resources/rtl/layouts/vertical-dark-menu/app.js'])
         @elseif (Request::is('rtl/collapsible-menu/*'))
-            @vite(['resources/rtl/layouts/collapsible-menu/app.js'])
-        @endif --}}
-
-        @if (Request::is('ar/modern-light-menu/*'))
-            @vite(['resources/rtl/layouts/vertical-light-menu/app.js'])
-        @elseif (Request::is('ar/modern-dark-menu/*'))
-            @vite(['resources/rtl/layouts/vertical-dark-menu/app.js'])
-        @elseif (Request::is('ar/collapsible-menu/*'))
             @vite(['resources/rtl/layouts/collapsible-menu/app.js'])
         @endif
 

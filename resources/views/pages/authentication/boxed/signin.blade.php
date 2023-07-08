@@ -25,7 +25,7 @@
                                             <h2>{{ __('trans.sign_in') }}</h2>
                                             <p>{{ __('trans.enter_em_pass') }}</p>
                                         </div>
-                                        <form method="POST" action="{{ getRouterValue() }}/login">
+                                        <form method="POST" action="/modern-dark-menu/login">
                                             @csrf
                                             <div class="col-md-12">
                                                 <div class="mb-3">
@@ -68,7 +68,7 @@
                                         <div class="col-12">
                                             <div class="text-center">
                                                 <p class="mb-0">{{ __('trans.dont_have_account') }}
-                                                    <a href="{{ getRouterValue() }}/sign-up" class="text-warning">
+                                                    <a href="/modern-dark-menu/sign-up" class="text-warning">
                                                         {{ __('trans.sign_up') }}
                                                     </a>
                                                 </p>

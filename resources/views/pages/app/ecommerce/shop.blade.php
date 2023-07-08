@@ -17,7 +17,7 @@
                         class="form-control" required="">
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-3 col-sm-3 mb-4 ms-auto">
-                    <a href="{{ getRouterValue() }}/add" class="btn btn-primary w-100 btn-lg mb-4">
+                    <a href="/modern-dark-menu/add" class="btn btn-primary w-100 btn-lg mb-4">
                         <span class="btn-text-inner">{{ __('trans.add_new_service') }}</span>
                     </a>
                 </div>
@@ -27,7 +27,7 @@
                 @unless (count($services) == 0)
                     @foreach ($services as $service)
                         <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
-                            <a class="card style-6" href="{{ getRouterValue() }}/detail/{{ $service->id }}">
+                            <a class="card style-6" href="/modern-dark-menu/detail/{{ $service->id }}">
                                 <span class="badge badge-primary">{{ __('trans.new') }}</span>
                                 <img src="{{ $service->picture ? asset('storage/' . $service->picture) : asset('no-image.png') }}"
                                     class="card-img-top" alt="..." style="width: 182px; height: 182px;">
@@ -42,12 +42,12 @@
                             <div class="container mt-1">
                                 <div class="card">
                                     <div class="btn btn-success mb-1">
-                                        <a href="{{ getRouterValue() }}/edit/{{ $service->id }}" class="text-white">
+                                        <a href="/modern-dark-menu/edit/{{ $service->id }}" class="text-white">
                                             {{ __('trans.edit') }}
                                         </a>
                                     </div>
                                     <div>
-                                        <form method="POST" action="{{ getRouterValue() }}/delete/{{ $service->id }}">
+                                        <form method="POST" action="/modern-dark-menu/delete/{{ $service->id }}">
                                             @csrf
                                             <button type="submit" class="btn btn-danger" style="width: 157px;">
                                                 {{ __('trans.delete') }}

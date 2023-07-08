@@ -43,7 +43,6 @@ class ServiceImageController extends Controller
     public function deleteImageService(Request $request, Service $service, ServiceImage $serviceImage)
     {
         $serviceImage->delete();
-
         return back();
     }
 }

@@ -58,7 +58,8 @@ class ServiceController extends Controller
             'image' => $formFields['service_image'],
             'service_id' => $service_id
         ]);
-        return redirect(getRouterValue() . '/dashboard');
+        return redirect('/modern-dark-menu/dashboard');
+        // return redirect(getRouterValue() . '/dashboard');
     }
 
     public function edit(Service $service)
@@ -86,7 +87,8 @@ class ServiceController extends Controller
 
         $service->update($formFields);
 
-        return redirect(getRouterValue() . '/dashboard');
+        return redirect('/modern-dark-menu/dashboard');
+        // return redirect(getRouterValue() . '/dashboard');
     }
 
     public function destroy(Request $request, Service $service)

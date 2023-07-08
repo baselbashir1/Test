@@ -84,7 +84,7 @@
                                     <hr class="mb-5 mt-4">
 
                                     <h4>{{ __('trans.add_image') }}</h4>
-                                    <form action="{{ getRouterValue() }}/detail/{{ $service->id }}/add-service-image"
+                                    <form action="/modern-dark-menu/detail/{{ $service->id }}/add-service-image"
                                         method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="col-xxl-12 col-xl-7 col-sm-6 mb-sm-0 mb-3">

@@ -25,7 +25,7 @@
                                             <h2>{{ __('trans.sign_up') }}</h2>
                                             <p>{{ __('trans.enter_em_pass_reg') }}</p>
                                         </div>
-                                        <form method="POST" action="{{ getRouterValue() }}/register">
+                                        <form method="POST" action="/modern-dark-menu/register">
                                             @csrf
                                             <div class="col-md-12">
                                                 <div class="mb-3">
@@ -57,8 +57,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="mb-3">
-                                                    <label
-                                                        class="form-label">{{ __('trans.confirm_password') }}</label>
+                                                    <label class="form-label">{{ __('trans.confirm_password') }}</label>
                                                     <input type="password" class="form-control"
                                                         name="password_confirmation">
                                                     @error('password_confirmation')
@@ -90,7 +89,7 @@
                                         <div class="col-12">
                                             <div class="text-center">
                                                 <p class="mb-0">{{ __('trans.have_account') }} <a
-                                                        href="{{ getRouterValue() }}/sign-in" class="text-warning">
+                                                        href="/modern-dark-menu/sign-in" class="text-warning">
                                                         {{ __('trans.sign_in') }}</a></p>
                                             </div>
                                         </div>

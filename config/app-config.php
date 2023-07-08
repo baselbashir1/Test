@@ -64,6 +64,6 @@ return array(
             'rtl' => true,
             'alt-menu' => true
         ),
-        
+
     ),
 );

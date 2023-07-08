@@ -17,9 +17,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome', ['title' => 'This is Title', 'breadcrumb' => 'This Breadcrumb']);
-});
+// Route::get('/', function () {
+//     return view('welcome', ['title' => 'This is Title', 'breadcrumb' => 'This Breadcrumb']);
+// });
 
 Route::group(
     [
@@ -27,52 +27,40 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        $prefixRouters = [
-            'modern-light-menu', 'modern-dark-menu', 'collapsible-menu'
-        ];
-
-        foreach ($prefixRouters as $prefixRouter) {
-            Route::prefix($prefixRouter)->group(function () {
-                Route::middleware(['auth'])->group(function () {
-                    Route::controller(ServiceController::class)->group(function () {
-                        Route::get('/dashboard', 'index');
-                        Route::get('/services', 'services');
-                        Route::get('/detail/{service}', 'show');
-                        Route::get('/add', 'create');
-                        Route::post('/add-service', 'store');
-                        Route::get('/edit/{service}', 'edit');
-                        Route::post('/edit-service/{service}', 'update');
-                        Route::post('/delete/{service}', 'destroy');
-                    });
-                    Route::controller(ServiceImageController::class)->group(function () {
-                        Route::post('/detail/{service}/add-service-image', 'addImageService');
-                        Route::post('/edit/{service}/edit-service-image/{serviceImage}', 'editImageService');
-                        Route::post('/delete/{service}/delete-service-image/{serviceImage}', 'deleteImageService');
-                    });
+        Route::prefix('modern-dark-menu')->group(function () {
+            Route::middleware(['auth'])->group(function () {
+                Route::controller(ServiceController::class)->group(function () {
+                    Route::get('/dashboard', 'index');
+                    Route::get('/services', 'services');
+                    Route::get('/detail/{service}', 'show');
+                    Route::get('/add', 'create');
+                    Route::post('/add-service', 'store');
+                    Route::get('/edit/{service}', 'edit');
+                    Route::post('/edit-service/{service}', 'update');
+                    Route::post('/delete/{service}', 'destroy');
                 });
-
-                // Route::get('/2-step-verification', function () {
-                //     return view('pages.authentication.boxed.2-step-verification', ['title' => '2 Step Verification Cover | CORK - Multipurpose Bootstrap Dashboard Template', 'breadcrumb' => 'This Breadcrumb']);
-                // })->name('2Step');
-                // Route::get('/password-reset', function () {
-                //     return view('pages.authentication.boxed.password-reset', ['title' => 'Password Reset Cover | CORK - Multipurpose Bootstrap Dashboard Template', 'breadcrumb' => 'This Breadcrumb']);
-                // })->name('password-reset');
-                Route::controller(UserController::class)->group(function () {
-                    Route::get('/sign-up', 'viewSignUp')->name('sign-up');
-                    Route::post('/register', 'register');
-                    Route::get('/sign-in', 'viewSignIn')->name('sign-in');
-                    Route::post('/login', 'login');
-                    Route::post('/logout', 'logout');
-                });
-
-                // make it in route
-                Route::prefix('user')->group(function () {
-                    Route::get('/profile', function () {
-                        return view('pages.user.profile', ['title' => 'Account Settings | CORK - Multipurpose Bootstrap Dashboard Template ', 'breadcrumb' => 'This Breadcrumb']);
-                    })->name('profile');
+                Route::controller(ServiceImageController::class)->group(function () {
+                    Route::post('/detail/{service}/add-service-image', 'addImageService');
+                    Route::post('/edit/{service}/edit-service-image/{serviceImage}', 'editImageService');
+                    Route::post('/delete/{service}/delete-service-image/{serviceImage}', 'deleteImageService');
                 });
             });
-        }
+
+            Route::controller(UserController::class)->group(function () {
+                Route::get('/sign-up', 'viewSignUp')->name('sign-up');
+                Route::post('/register', 'register');
+                Route::get('/sign-in', 'viewSignIn')->name('sign-in');
+                Route::post('/login', 'login');
+                Route::post('/logout', 'logout');
+            });
+
+            // make it in route
+            Route::prefix('user')->group(function () {
+                Route::get('/profile', function () {
+                    return view('pages.user.profile', ['title' => 'Account Settings | CORK - Multipurpose Bootstrap Dashboard Template ', 'breadcrumb' => 'This Breadcrumb']);
+                })->name('profile');
+            });
+        });
     }
 );
 
