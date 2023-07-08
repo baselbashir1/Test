@@ -59,4 +59,10 @@ class UserController extends Controller
         if (app()->getLocale() == 'en') return redirect('/modern-dark-menu/sign-in');
         if (app()->getLocale() == 'ar') return redirect('/rtl/modern-dark-menu/sign-in');
     }
+
+    public function profile()
+    {
+        if (app()->getLocale() == 'en') return view('pages.user.profile', ['title' => 'Profile']);
+        if (app()->getLocale() == 'ar') return view('pages-rtl.user.profile', ['title' => 'Profile']);
+    }
 }

@@ -40,6 +40,7 @@ Route::group(
                     Route::post('/edit/{service}/edit-service-image/{serviceImage}', 'editImageService');
                     Route::post('/delete/{service}/delete-service-image/{serviceImage}', 'deleteImageService');
                 });
+                Route::get('/profile', [UserController::class, 'profile']);
             });
             Route::controller(UserController::class)->group(function () {
                 Route::get('/sign-up', 'viewSignUp')->name('sign-up');

@@ -77,10 +77,6 @@ class ServiceController extends Controller
 
     public function update(Request $request, Service $service)
     {
-        // if ($service->user_id != auth()->id) {
-        //     abort(403, 'Unauthorized Action');
-        // }
-
         $formFields = $request->all();
 
         if ($request->hasFile('picture')) {
@@ -99,9 +95,6 @@ class ServiceController extends Controller
 
     public function destroy(Request $request, Service $service)
     {
-        // if ($service->user_id != auth()->id())
-        //     abort(403, 'Unauthorized Action');
-
         $serviceImages = ServiceImage::where('service_id', $service->id);
 
         $serviceImages->delete();
@@ -109,10 +102,4 @@ class ServiceController extends Controller
 
         return back();
     }
-
-    // public function manage()
-    // {
-    //     return view('/', ['services' => auth()->user()->services()->get()]);
-    // }
-
 }
