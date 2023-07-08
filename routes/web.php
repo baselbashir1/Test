@@ -17,11 +17,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome', ['title' => 'This is Title', 'breadcrumb' => 'This Breadcrumb']);
-// });
-
-
+Route::get('/', function () {
+    return view('welcome', ['title' => 'This is Title', 'breadcrumb' => 'This Breadcrumb']);
+});
 
 Route::group(
     [
@@ -29,11 +27,6 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-
-        // Route::get('/', function () {
-        //     return view('welcome');
-        // });
-
         $prefixRouters = [
             'modern-light-menu', 'modern-dark-menu', 'collapsible-menu'
         ];

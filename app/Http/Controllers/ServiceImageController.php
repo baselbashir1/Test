@@ -10,12 +10,7 @@ class ServiceImageController extends Controller
 {
     public function addImageService(Request $request, Service $service)
     {
-        // $service_id = $service->id;
         $formFields = $request->all();
-        // $formFields = $request->validate([
-        //     'img' => 'required'
-        //     // 'service_id' => 'required'
-        // ]);
 
         if ($request->hasFile('img')) {
             $formFields['img'] = $request->file('img')->store('images', 'public');
@@ -33,21 +28,9 @@ class ServiceImageController extends Controller
     {
         $formFields = $request->all();
 
-        // $formFields = $request->validate([
-        //     'img' => 'required'
-        //     // 'service_id' => 'required'
-        // ]);
-
         if ($request->hasFile('img')) {
             $formFields['img'] = $request->file('img')->store('images', 'public');
         }
-
-        // ServiceImage::create([
-        //     'image' => $formFields['img'],
-        //     'service_id' =>  $service->id
-        // ]);
-
-        // $serviceImage->update($formFields);
 
         $serviceImage->update([
             'image' => $formFields['img'],

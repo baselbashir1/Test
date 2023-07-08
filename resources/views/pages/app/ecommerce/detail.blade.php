@@ -83,7 +83,7 @@
 
                                     <hr class="mb-5 mt-4">
 
-                                    <h4>Add Image</h4>
+                                    <h4>{{ __('trans.add_image') }}</h4>
                                     <form action="{{ getRouterValue() }}/detail/{{ $service->id }}/add-service-image"
                                         method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -94,7 +94,7 @@
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-primary w-100 btn-lg">
-                                                <span class="btn-text-inner">Submit</span>
+                                                <span class="btn-text-inner">{{ __('trans.submit') }}</span>
                                             </button>
                                         </div>
                                     </form>

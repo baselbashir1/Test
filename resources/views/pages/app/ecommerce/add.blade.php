@@ -35,9 +35,9 @@
 
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="title">Service Title</label>
+                                    <label for="title">{{ __('trans.service_title') }}</label>
                                     <input type="text" name="title" class="form-control" id="inputEmail3"
-                                        placeholder="Service Title">
+                                        placeholder="{{ __('trans.service_title') }}">
                                 </div>
                                 @error('title')
                                     <p class="mt-2">{{ $message }}</p>
@@ -46,7 +46,7 @@
 
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="picture">Upload Service Picture</label>
+                                    <label for="picture">{{ __('trans.update_service_details') }}</label>
                                     <input type="file" name="picture" class="form-control" id="inputEmail3"
                                         placeholder="Service Picture">
                                 </div>
@@ -57,8 +57,9 @@
 
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="content">Service Content</label>
-                                    <textarea name="content" cols="30" rows="10" class="form-control" placeholder="Service Content"></textarea>
+                                    <label for="content">{{ __('trans.service_content') }}</label>
+                                    <textarea name="content" cols="30" rows="10" class="form-control"
+                                        placeholder="{{ __('trans.service_content') }}"></textarea>
                                 </div>
                                 @error('content')
                                     <p class="mt-2">{{ $message }}</p>
@@ -67,7 +68,7 @@
 
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="service_image">Upload Service Images</label>
+                                    <label for="service_image">{{ __('trans.upload_service_images') }}</label>
                                     <input type="file" name="service_image" class="form-control" id="inputEmail3"
                                         placeholder="Service Picture">
                                 </div>
@@ -90,7 +91,8 @@
                             <div class="col-xxl-12 col-xl-4 col-lg-4 col-md-5 mt-4">
                                 <div class="widget-content widget-content-area ecommerce-create-section">
                                     <div class="col-sm-12">
-                                        <button type="submit" class="btn btn-success w-100">Add Service</button>
+                                        <button type="submit"
+                                            class="btn btn-success w-100">{{ __('trans.add_service') }}</button>
                                     </div>
                                 </div>
                             </div>

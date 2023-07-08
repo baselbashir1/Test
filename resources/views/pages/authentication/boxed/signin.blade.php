@@ -14,28 +14,22 @@
             <!-- END GLOBAL MANDATORY STYLES -->
 
             <div class="auth-container d-flex">
-
                 <div class="container mx-auto align-self-center">
-
                     <div class="row">
-
                         <div
                             class="col-xxl-4 col-xl-5 col-lg-5 col-md-8 col-12 d-flex flex-column align-self-center mx-auto">
                             <div class="card mt-3 mb-3">
                                 <div class="card-body">
-
                                     <div class="row">
                                         <div class="col-md-12 mb-3">
-
-                                            <h2>Sign In</h2>
-                                            <p>Enter your email and password to login</p>
-
+                                            <h2>{{ __('trans.sign_in') }}</h2>
+                                            <p>{{ __('trans.enter_em_pass') }}</p>
                                         </div>
                                         <form method="POST" action="{{ getRouterValue() }}/login">
                                             @csrf
                                             <div class="col-md-12">
                                                 <div class="mb-3">
-                                                    <label class="form-label">Email</label>
+                                                    <label class="form-label">{{ __('trans.email') }}</label>
                                                     <input type="email" class="form-control" name="email">
                                                     @error('email')
                                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -44,7 +38,7 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="mb-4">
-                                                    <label class="form-label">Password</label>
+                                                    <label class="form-label">{{ __('trans.password') }}</label>
                                                     <input type="password" class="form-control" name="password">
                                                     @error('password')
                                                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -57,38 +51,35 @@
                                                         <input class="form-check-input me-3" type="checkbox"
                                                             id="form-check-default">
                                                         <label class="form-check-label" for="form-check-default">
-                                                            Remember me
+                                                            {{ __('trans.remember_me') }}
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="col-12">
                                                 <div class="mb-4">
-                                                    <button type="submit" class="btn btn-secondary w-100">SIGN
-                                                        IN</button>
+                                                    <button type="submit" class="btn btn-secondary w-100"
+                                                        style="text-transform:uppercase">
+                                                        {{ __('trans.sign_in') }}
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
-
                                         <div class="col-12">
                                             <div class="text-center">
-                                                <p class="mb-0">Dont't have an account ? <a
-                                                        href="{{ getRouterValue() }}/sign-up" class="text-warning">Sign
-                                                        Up</a></p>
+                                                <p class="mb-0">{{ __('trans.dont_have_account') }}
+                                                    <a href="{{ getRouterValue() }}/sign-up" class="text-warning">
+                                                        {{ __('trans.sign_up') }}
+                                                    </a>
+                                                </p>
                                             </div>
                                         </div>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
 
             <!--  BEGIN CUSTOM SCRIPTS FILE  -->

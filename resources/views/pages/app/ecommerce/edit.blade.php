@@ -36,7 +36,7 @@
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <div class="row">
-                                        <label for="picture">Service Picture</label>
+                                        <label for="picture">{{ __('trans.service_picture') }}</label>
                                         <div class="text-center">
                                             <img src="{{ $service->picture ? asset('storage/' . $service->picture) : asset('no-image.png') }}"
                                                 class="card-img-top" alt="..."
@@ -51,20 +51,21 @@
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="title">Service Title</label>
+                                    <label for="title">{{ __('trans.service_title') }}</label>
                                     <input type="text" name="title" class="form-control" id="inputEmail3"
-                                        placeholder="Service Title" value="{{ $service->title }}">
+                                        placeholder="{{ __('trans.service_title') }}" value="{{ $service->title }}">
                                 </div>
                             </div>
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="content">Service Content</label>
-                                    <textarea name="content" cols="30" rows="10" class="form-control" placeholder="Service Content">{{ $service->content }}</textarea>
+                                    <label for="content">{{ __('trans.service_content') }}</label>
+                                    <textarea name="content" cols="30" rows="10" class="form-control"
+                                        placeholder="{{ __('trans.service_content') }}">{{ $service->content }}</textarea>
                                 </div>
                             </div>
                             <div class="container">
                                 <button type="submit" class="btn btn-success w-100">
-                                    Update Service Details
+                                    {{ __('trans.update_service_details') }}
                                 </button>
                             </div>
                         </div>
@@ -76,7 +77,7 @@
                 {{-- <form method="POST" action="" enctype="multipart/form-data">
                     @csrf --}}
                 @unless (count($serviceImages) == 0)
-                    <h3>Service Images</h3>
+                    <h3>{{ __('trans.service_images') }}</h3>
                     @foreach ($serviceImages as $serviceImage)
                         <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-4">
                             <div class="widget-content widget-content-area ecommerce-create-section">
@@ -105,7 +106,7 @@
                                     </div>
                                     <div class="container">
                                         <button type="submit" class="btn btn-success w-100">
-                                            Update Image
+                                            {{ __('trans.update_image') }}
                                         </button>
                                     </div>
                                 </form>
@@ -114,7 +115,7 @@
                                     @csrf
                                     <div class="container mt-2">
                                         <button type="submit" class="btn btn-danger w-100">
-                                            Delete Image
+                                            {{ __('trans.delete_image') }}
                                         </button>
                                     </div>
                                 </form>
@@ -122,7 +123,7 @@
                         </div>
                     @endforeach
                 @else
-                    <h3 class="text-center">No Images Found</h3>
+                    <h3 class="text-center">{{ __('trans.no_images_found') }}</h3>
                 @endunless
                 {{-- </form> --}}
             </div>

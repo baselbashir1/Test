@@ -30,7 +30,8 @@
             </svg>
             <form class="form-inline search-full form-inline search" role="search">
                 <div class="search-bar">
-                    <input type="text" class="form-control search-form-control  ml-lg-auto" placeholder="Search...">
+                    <input type="text" class="form-control search-form-control  ml-lg-auto"
+                        placeholder="{{ __('trans.search') }}...">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round" class="feather feather-x search-close">
@@ -39,7 +40,7 @@
                     </svg>
                 </div>
             </form>
-            <span class="badge badge-secondary">Ctrl + /</span>
+            {{-- <span class="badge badge-secondary">Ctrl + /</span> --}}
         </div>
 
         <ul class="navbar-item flex-row ms-lg-auto ms-0">
@@ -93,7 +94,7 @@
                 </a>
             </li>
 
-            <li class="nav-item dropdown notification-dropdown">
+            {{-- <li class="nav-item dropdown notification-dropdown">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="notificationDropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -290,7 +291,7 @@
                     </div>
                 </div>
 
-            </li>
+            </li> --}}
 
             <li class="nav-item dropdown user-profile-dropdown  order-lg-0 order-1">
                 <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown"
@@ -330,7 +331,7 @@
                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
                                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="12" cy="7" r="4"></circle>
-                            </svg> <span>Profile</span>
+                            </svg> <span>{{ __('trans.profile') }}</span>
                         </a>
                     </div>
                     {{-- <div class="dropdown-item">
@@ -361,14 +362,14 @@
                             <form action="{{ getRouterValue() }}/logout" method="POST">
                                 @csrf
                                 <button type="submit">
-                                    Log Out
+                                    {{ __('trans.logout') }}
                                 </button>
                             </form>
                         </div>
                     @else
                         <div class="dropdown-item">
                             <a href="{{ getRouterValue() }}/sign-in">
-                                Log In
+                                {{ __('trans.login') }}
                             </a>
                         </div>
                     @endauth

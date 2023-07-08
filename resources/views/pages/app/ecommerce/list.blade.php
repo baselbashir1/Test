@@ -23,7 +23,7 @@
             <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-6">
                     <a href="{{ getRouterValue() }}/add" class="btn btn-primary w-100 btn-lg mb-4">
-                        <span class="btn-text-inner">Add New Service</span>
+                        <span class="btn-text-inner">{{ __('trans.add_new_service') }}</span>
                     </a>
                 </div>
             </div>
@@ -35,10 +35,10 @@
                             <thead>
                                 <tr>
                                     {{-- <th class="checkbox-column"></th> --}}
-                                    <th>Service Title</th>
-                                    <th>Service Picture</th>
-                                    <th>Service Content</th>
-                                    <th class="no-content text-center">Action</th>
+                                    <th>{{ __('trans.service_title') }}</th>
+                                    <th>{{ __('trans.service_picture') }}</th>
+                                    <th>{{ __('trans.service_content') }}</th>
+                                    <th class="no-content text-center">{{ __('trans.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,14 +58,14 @@
                                             <td>{{ $service->content }}</td>
                                             <td class="text-center">
                                                 <a href="{{ getRouterValue() }}/detail/{{ $service->id }}"
-                                                    class="btn btn-primary">View</a>
+                                                    class="btn btn-primary">{{ __('trans.view') }}</a>
                                                 <a href="{{ getRouterValue() }}/edit/{{ $service->id }}"
-                                                    class="btn btn-success">Edit</a>
+                                                    class="btn btn-success">{{ __('trans.edit') }}</a>
                                                 <form method="POST" class="mt-1"
                                                     action="{{ getRouterValue() }}/delete/{{ $service->id }}">
                                                     @csrf
                                                     <button type="submit" class="btn btn-danger">
-                                                        Delete
+                                                        {{ __('trans.delete') }}
                                                     </button>
                                                 </form>
                                             </td>

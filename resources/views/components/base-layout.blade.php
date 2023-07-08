@@ -23,6 +23,10 @@
     <link rel="icon" type="image/x-icon" href="{{ Vite::asset('resources/images/favicon.ico') }}" />
     @vite(['resources/scss/layouts/vertical-light-menu/light/loader.scss'])
 
+    {{-- @if (Request::is('en/*'))
+        @vite(['resources/layouts/vertical-dark-menu/loader.js'])
+    @endif --}}
+
     @if (Request::is('modern-light-menu/*'))
         @vite(['resources/layouts/vertical-light-menu/loader.js'])
     @elseif (Request::is('modern-dark-menu/*'))
@@ -178,6 +182,10 @@
         @if ($scrollspy == 1)
             @vite(['resources/assets/js/scrollspyNav.js'])
         @endif
+
+        {{-- @if (Request::is('en/*'))
+            @vite(['resources/layouts/vertical-dark-menu/app.js'])
+        @endif --}}
 
         @if (Request::is('modern-light-menu/*'))
             @vite(['resources/layouts/vertical-light-menu/app.js'])
