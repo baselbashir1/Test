@@ -18,7 +18,8 @@
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-3 col-sm-3 mb-4 ms-auto">
                     <a href="/modern-dark-menu/add" class="btn btn-primary w-100 btn-lg mb-4">
-                        <span class="btn-text-inner">{{ __('trans.add_new_service') }}</span>
+                        <span class="btn-text-inner"><i class="fab fa-servicestack"></i>
+                            {{ __('trans.add_new_service') }}</span>
                     </a>
                 </div>
             </div>
@@ -28,7 +29,7 @@
                     @foreach ($services as $service)
                         <div class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4">
                             <a class="card style-6" href="/modern-dark-menu/detail/{{ $service->id }}">
-                                <span class="badge badge-primary">{{ __('trans.new') }}</span>
+                                <span class="badge badge-primary"><i class="fas fa-star"></i> {{ __('trans.new') }}</span>
                                 <img src="{{ $service->picture ? asset('storage/' . $service->picture) : asset('no-image.png') }}"
                                     class="card-img-top" alt="..." style="width: 182px; height: 182px;">
                                 <div class="card-footer">

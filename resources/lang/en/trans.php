@@ -9,9 +9,12 @@ return [
     'service_images' => 'Service Images',
     'add_service' => 'Add Service',
 
+    'services_management' => 'Services Management',
+
     'add_new_service' => 'Add New Service',
     'update_service_details' => 'Update Service Details',
     'upload_service_images' => 'Upload Service Images',
+    'upload_service_image' => 'Upload Service Image',
     'view' => 'View',
     'edit' => 'Edit',
     'delete' => 'Delete',
@@ -50,6 +53,5 @@ return [
     'have_account' => 'Already have an account ?',
     'agree' => 'I agree the',
     'terms_conditions' => 'Terms and Conditions'
-
 
 ];

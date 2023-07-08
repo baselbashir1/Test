@@ -23,7 +23,8 @@
             <div class="row layout-top-spacing">
                 <div class="col-xl-12 col-lg-6">
                     <a href="/modern-dark-menu/add" class="btn btn-primary w-100 btn-lg mb-4">
-                        <span class="btn-text-inner">{{ __('trans.add_new_service') }}</span>
+                        <span class="btn-text-inner"><i class="fab fa-servicestack"></i>
+                            {{ __('trans.add_new_service') }}</span>
                     </a>
                 </div>
             </div>
@@ -34,10 +35,11 @@
                         <table id="ecommerce-list" class="table dt-table-hover" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{ __('trans.service_title') }}</th>
-                                    <th>{{ __('trans.service_picture') }}</th>
-                                    <th>{{ __('trans.service_content') }}</th>
-                                    <th class="no-content text-center">{{ __('trans.action') }}</th>
+                                    <th><i class="fab fa-servicestack"></i> {{ __('trans.service_title') }}</th>
+                                    <th><i class="fas fa-image"></i> {{ __('trans.service_picture') }}</th>
+                                    <th><i class="fas fa-book-open"></i> {{ __('trans.service_content') }}</th>
+                                    <th class="no-content text-center"><i class="fas fa-recycle"></i>
+                                        {{ __('trans.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -61,10 +61,11 @@
                                         {{ $service->title }}</h3>
                                     <hr class="mb-4">
                                     <div class="container">
-                                        <p>{{ $service->content }}</p>
+                                        <p style="font-size: 20px"><i class="fas fa-book-open"></i>
+                                            {{ $service->content }}</p>
                                     </div>
                                     <hr class="mb-5 mt-4">
-                                    <h4>{{ __('trans.add_image') }}</h4>
+                                    <h4><i class="fas fa-image"></i> {{ __('trans.add_image') }}</h4>
                                     <form action="/modern-dark-menu/detail/{{ $service->id }}/add-service-image"
                                         method="POST" enctype="multipart/form-data">
                                         @csrf

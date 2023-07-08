@@ -32,10 +32,10 @@
                     @csrf
                     <div class="col-xxl-9 col-xl-12 col-lg-12 col-md-12 col-sm-12">
                         <div class="widget-content widget-content-area ecommerce-create-section">
-
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="title">{{ __('trans.service_title') }}</label>
+                                    <label for="title"><i class="fab fa-servicestack"></i>
+                                        {{ __('trans.service_title') }}</label>
                                     <input type="text" name="title" class="form-control" id="inputEmail3"
                                         placeholder="{{ __('trans.service_title') }}">
                                 </div>
@@ -43,10 +43,10 @@
                                     <p class="mt-2">{{ $message }}</p>
                                 @enderror
                             </div>
-
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="picture">{{ __('trans.update_service_details') }}</label>
+                                    <label for="picture"><i class="fas fa-image"></i>
+                                        {{ __('trans.service_picture') }}</label>
                                     <input type="file" name="picture" class="form-control" id="inputEmail3"
                                         placeholder="Service Picture">
                                 </div>
@@ -54,10 +54,10 @@
                                     <p class="mt-2">{{ $message }}</p>
                                 @enderror
                             </div>
-
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="content">{{ __('trans.service_content') }}</label>
+                                    <label for="content"><i class="fas fa-book-open"></i>
+                                        {{ __('trans.service_content') }}</label>
                                     <textarea name="content" cols="30" rows="10" class="form-control"
                                         placeholder="{{ __('trans.service_content') }}"></textarea>
                                 </div>
@@ -65,10 +65,10 @@
                                     <p class="mt-2">{{ $message }}</p>
                                 @enderror
                             </div>
-
                             <div class="row mb-4">
                                 <div class="col-sm-12">
-                                    <label for="service_image">{{ __('trans.upload_service_images') }}</label>
+                                    <label for="service_image"><i class="fas fa-images"></i>
+                                        {{ __('trans.upload_service_image') }}</label>
                                     <input type="file" name="service_image" class="form-control" id="inputEmail3"
                                         placeholder="Service Picture">
                                 </div>
@@ -76,19 +76,7 @@
                                     <p class="mt-2">{{ $message }}</p>
                                 @enderror
                             </div>
-
-                            {{-- <div class="row">
-                                <div class="col-md-12">
-                                    <label for="service_image">Upload Service Images</label>
-                                    <div class="multiple-file-upload">
-                                        <input type="file" class="filepond file-upload-multiple" name="service_image"
-                                            id="product-images" multiple data-allow-reorder="true"
-                                            data-max-file-size="3MB" data-max-files="5">
-                                    </div>
-                                </div>
-                            </div> --}}
-
-                            <div class="col-xxl-12 col-xl-4 col-lg-4 col-md-5 mt-4">
+                            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 mt-4">
                                 <div class="widget-content widget-content-area ecommerce-create-section">
                                     <div class="col-sm-12">
                                         <button type="submit"

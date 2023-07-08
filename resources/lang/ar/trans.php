@@ -9,9 +9,12 @@ return [
     'service_images' => 'صور الخدمة',
     'add_service' => 'إضافة خدمة',
 
+    'services_management' => 'إدارة الخدمات',
+
     'add_new_service' => 'إضافة خدمة جديدة',
     'update_service_details' => 'تحديث تفاصيل الخدمة',
     'upload_service_images' => 'تحميل صور الخدمة',
+    'upload_service_image' => 'تحميل صورة الخدمة',
     'view' => 'عرض',
     'edit' => 'تعديل',
     'delete' => 'حذف',
@@ -50,6 +53,5 @@ return [
     'have_account' => 'هل لديك حساب ؟',
     'agree' => 'أوافق على',
     'terms_conditions' => 'الأحكام والشروط'
-
 
 ];
