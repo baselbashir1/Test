@@ -28,6 +28,7 @@ return [
     'service_content' => 'Service Content',
 
     'services' => 'Services',
+    'users' => 'Users',
 
     'profile' => 'Profile',
 

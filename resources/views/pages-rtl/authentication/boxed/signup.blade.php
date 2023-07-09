@@ -13,6 +13,26 @@
             </x-slot>
             <!-- END GLOBAL MANDATORY STYLES -->
 
+            <div class="container mt-4">
+                <ul class="nav-item dropdown language-dropdown">
+                    <a href="javascript:void(0);" class="nav-link dropdown-toggle mt-2" id="language-dropdown"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <p class="fas fa-globe" style="font-size: 25px"></p>
+                    </a>
+                    <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
+                        @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li class="container">
+                                <a rel="alternate" hreflang="{{ $localeCode }}"
+                                    href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                    {{-- {{ $localeCode == LaravelLocalization::getCurrentLocale() ? 'active' : '' }} --}}
+                                </a>
+                            </li>
+                        @endforeach
+                    </div>
+                </ul>
+            </div>
+
             <div class="auth-container d-flex">
                 <div class="container mx-auto align-self-center">
                     <div class="row">
@@ -57,7 +77,8 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="mb-3">
-                                                    <label class="form-label">{{ __('trans.confirm_password') }}</label>
+                                                    <label
+                                                        class="form-label">{{ __('trans.confirm_password') }}</label>
                                                     <input type="password" class="form-control"
                                                         name="password_confirmation">
                                                     @error('password_confirmation')
