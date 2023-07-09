@@ -50,8 +50,11 @@
                         <li class="container">
                             <a rel="alternate" hreflang="{{ $localeCode }}"
                                 href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                                {{ $properties['native'] }}
-                                {{-- {{ $localeCode == LaravelLocalization::getCurrentLocale() ? 'active' : '' }} --}}
+                                <div class="container" style="width: 150px">
+                                    {{ $properties['native'] }}
+                                    <span style="color:greenyellow">
+                                        {{ $localeCode == LaravelLocalization::getCurrentLocale() ? 'active' : '' }}</span>
+                                </div>
                             </a>
                         </li>
                     @endforeach
@@ -92,9 +95,6 @@
                 <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                     <div class="user-profile-section">
                         <div class="media mx-auto">
-                            <div class="emoji me-2">
-                                &#x1F44B;
-                            </div>
                             <div class="media-body">
                                 <h5>
                                     @auth
